@@ -1,28 +1,41 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace IdleRPG
 {
-    public class Enemy : MonoBehaviour,ICombatant
+    public class Enemy : MonoBehaviour, ICombatant
     {
-        [SerializeField,Required] private EnemyAnimations _animations;
-        [SerializeField,Required] private Stats _stats;
+        [field: SerializeField] public EnemyType EnemyType { get; private set; }
+        [SerializeField, Required] private EnemyAnimations _animations;
+        [SerializeField, Required] private BaseStats _baseStats;
+
+        private CombatStats _combatStats;
+
+        private void Start()
+        {
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            CreateCombatStats();
+        }
 
         public void Attak()
         {
             _animations.Attack();
         }
 
-        public Stats GetStats()
+        public CombatStats GetCombatStats()
         {
-            return _stats;
+            return _combatStats;
         }
 
-        public void ReceiveDamage(int amount)
+        private void CreateCombatStats()
         {
-            Debug.Log($"{name} receive {amount} damage");
+            CombatStatsBuilder builder = new CombatStatsBuilder();
+            _combatStats = builder.AddBaseStats(_baseStats)
+                .Build();
         }
     }
 }

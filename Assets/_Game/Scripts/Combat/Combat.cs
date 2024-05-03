@@ -1,22 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace IdleRPG
 {
     public class Combat : MonoBehaviour
     {
-        [SerializeField] private Player PLAYER;
-        [SerializeField] private Enemy ENEMY;
-
-
         private ICombatant _player;
         private ICombatant _enemy;
 
-        private void Start()
-        {
-            Initialize(PLAYER, ENEMY);
-        }
+        private DelayedAction _playerAttackAction;
+        private DelayedAction _enemyAttackAction;
 
         public void Initialize(ICombatant player, ICombatant enemy)
         {
@@ -24,11 +18,14 @@ namespace IdleRPG
             _enemy = enemy;
         }
 
-
+        [Button]
         public void StatBattle()
         {
+            _playerAttackAction = new DelayedAction(_player.GetCombatStats().AttackDelay, _player.Attak);
+            _enemyAttackAction = new DelayedAction(_enemy.GetCombatStats().AttackDelay, _enemy.Attak);
 
+            _playerAttackAction.Begin();
+            _enemyAttackAction.Begin();
         }
-
     }
 }
