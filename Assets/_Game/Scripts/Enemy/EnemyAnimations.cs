@@ -1,11 +1,9 @@
-using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 
 namespace IdleRPG
 {
-    public class EnemyAnimations : MonoBehaviour
+    public sealed class EnemyAnimations : MonoBehaviour
     {
         [SerializeField, ReadOnly] private Animator _animator;
 

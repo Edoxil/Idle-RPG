@@ -1,6 +1,4 @@
-using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 
 namespace IdleRPG
@@ -8,7 +6,7 @@ namespace IdleRPG
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimations : MonoBehaviour
     {
-        [SerializeField,ReadOnly]private Animator _animator;
+        [SerializeField, ReadOnly] private Animator _animator;
 
         [Button]
         public void Attack()

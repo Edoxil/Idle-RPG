@@ -1,22 +1,23 @@
-using Sirenix.OdinInspector;
+using TriInspector;
 using UnityEngine;
+using Zenject;
 
 namespace IdleRPG
 {
-    public class Player : MonoBehaviour, ICombatant
+    public sealed class Player : MonoBehaviour, ICombatant, IInitializable
     {
         [SerializeField, Required] private PlayerAnimations _animations;
         [SerializeField, Required] private BaseStats _baseStats;
         private CombatStats _combatStats;
 
-        private void Start()
-        {
-            Initialize();
-        }
-
         public void Initialize()
         {
             CreateCombatStats();
+        }
+
+        public void ResetAnimations()
+        {
+
         }
 
         public void Attak()

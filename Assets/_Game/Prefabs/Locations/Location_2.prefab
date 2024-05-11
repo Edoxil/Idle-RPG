@@ -177,7 +177,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7a7ecee4ed53b947bceddb65f260fcc, type: 2}
+  - {fileID: 2100000, guid: aa8f38a2277cb3a4d9dc85013bcac233, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 7787020915721681066}
   - component: {fileID: 7787020915721681067}
   m_Layer: 0
-  m_Name: Location_1
+  m_Name: Location_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,6 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25a367ca2addf948a18f1e329c03924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <LocationType>k__BackingField: 0
+  <LocationType>k__BackingField: 1
   <PlayerSpawnPoint>k__BackingField: {fileID: 7787020914904859498}
   <EnemySpawnPoint>k__BackingField: {fileID: 7787020914854523309}

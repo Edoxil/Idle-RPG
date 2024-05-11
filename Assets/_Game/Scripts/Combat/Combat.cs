@@ -1,10 +1,10 @@
-using Sirenix.OdinInspector;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace IdleRPG
 {
-    public class Combat : MonoBehaviour
+    public sealed class Combat : MonoBehaviour
     {
         private ICombatant _player;
         private ICombatant _enemy;
