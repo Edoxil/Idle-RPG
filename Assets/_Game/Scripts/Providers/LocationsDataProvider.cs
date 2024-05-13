@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TriInspector;
 using UnityEngine;
 
 namespace IdleRPG
@@ -8,6 +9,7 @@ namespace IdleRPG
     public class LocationsDataProvider : ScriptableObject
     {
         [SerializeField] private List<Location> _allLocations;
+        [SerializeField,Required] private LocationViewItem _viewItemPrefab;
 
         public Location GetPrefab(LocationType locationType)
         {
@@ -18,5 +20,16 @@ namespace IdleRPG
         {
             return _allLocations.First(l => l.LocationType == locationType).Icon;
         }
+
+        public LocationViewItem GetViewItemPrefab()
+        {
+            return _viewItemPrefab;
+        }
+
+        public IEnumerable<LocationType> AllLocationsTypes()
+        {
+            return _allLocations.Select(location => location.LocationType);
+        }
     }
+
 }

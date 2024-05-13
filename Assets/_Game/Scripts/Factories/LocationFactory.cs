@@ -3,7 +3,7 @@ using Zenject;
 
 namespace IdleRPG
 {
-    public sealed class LocationFactory : MonoBehaviour, IFactory<Location, LocationType>
+    public sealed class LocationFactory : IFactory<Location, LocationType>
     {
         private LocationsDataProvider _locationsDataProvider;
 
@@ -13,10 +13,10 @@ namespace IdleRPG
             _locationsDataProvider = locationsDataProvider;
         }
 
-        public Location Create(LocationType locationType, Transform parent = null)
+        public Location Create(LocationType locationType, Transform parent)
         {
             Location location = _locationsDataProvider.GetPrefab(locationType);
-            return Instantiate(location, parent != null ? parent : transform);
+            return GameObject.Instantiate(location, parent);
         }
     }
 }

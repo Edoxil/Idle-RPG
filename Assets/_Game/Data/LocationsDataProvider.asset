@@ -15,3 +15,5 @@ MonoBehaviour:
   _allLocations:
   - {fileID: 7787020915721681067, guid: 1dea55e1f22da4f4aa4c7d2792b42405, type: 3}
   - {fileID: 7787020915721681067, guid: 94254c0bad0fb5948a465b577823ebf8, type: 3}
+  _viewItemPrefab: {fileID: 7502065203728814695, guid: 29df949b7dbd65d4c88047702c26ecd0,
+    type: 3}

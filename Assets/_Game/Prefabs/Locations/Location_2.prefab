@@ -326,3 +326,5 @@ MonoBehaviour:
   <LocationType>k__BackingField: 1
   <PlayerSpawnPoint>k__BackingField: {fileID: 7787020914904859498}
   <EnemySpawnPoint>k__BackingField: {fileID: 7787020914854523309}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 3efa667f3470ee143a8134ef29763a3b,
+    type: 3}
