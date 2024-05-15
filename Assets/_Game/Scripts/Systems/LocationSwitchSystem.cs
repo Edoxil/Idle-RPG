@@ -6,7 +6,7 @@ using Zenject;
 
 namespace IdleRPG
 {
-    public class LocationSwitchSystem : MonoBehaviour, IInitializable, IDisposable
+    public class LocationSwitchSystem : MonoBehaviour, IInitializable, IDisposable, ILocationSwitcher
     {
         [SerializeField] private LocationType _defaultLocation;
         private IFactory<Location, LocationType> _factory;
@@ -38,7 +38,6 @@ namespace IdleRPG
             _view.SwitchLocationRequested -= SwitchLocation;
         }
 
-        [Button]
         private void SwitchLocation(LocationType locationType)
         {
             if (CurrentLocation != null && CurrentLocation.LocationType == locationType)
@@ -50,8 +49,8 @@ namespace IdleRPG
             CurrentLocation = _factory.Create(locationType, transform);
             _lastVisitedLocation = locationType;
 
-            LocationSwitched?.Invoke(CurrentLocation);
             Save();
+            LocationSwitched?.Invoke(CurrentLocation);
         }
 
         private void Save()
@@ -69,8 +68,6 @@ namespace IdleRPG
             else
                 _lastVisitedLocation = _defaultLocation;
         }
-
-
 
         [System.Serializable]
         private struct SavingData

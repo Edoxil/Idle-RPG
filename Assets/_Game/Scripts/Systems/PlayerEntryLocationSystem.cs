@@ -6,29 +6,29 @@ namespace IdleRPG
     public class PlayerEntryLocationSystem : IInitializable, IDisposable
     {
         private Player _player;
-        private LocationSwitchSystem _locationSwitchSystem;
+        private ILocationSwitcher _locationSwitcher;
 
         [Inject]
-        public void Construct(Player player, LocationSwitchSystem locationSwitchSystem)
+        public void Construct(Player player, ILocationSwitcher locataionSwitcher)
         {
             _player = player;
-            _locationSwitchSystem = locationSwitchSystem;
+            _locationSwitcher = locataionSwitcher;
         }
 
         public void Initialize()
         {
-            _locationSwitchSystem.LocationSwitched += OnLocationSwitched;
-            OnLocationSwitched(_locationSwitchSystem.CurrentLocation);
+            _locationSwitcher.LocationSwitched += OnLocationSwitched;
+            OnLocationSwitched(_locationSwitcher.CurrentLocation);
         }
 
         public void Dispose()
         {
-            _locationSwitchSystem.LocationSwitched -= OnLocationSwitched;
+            _locationSwitcher.LocationSwitched -= OnLocationSwitched;
         }
 
         private void OnLocationSwitched(Location location)
         {
-            _player.ResetAnimations();
+            _player.EnterLocation();
             _player.transform.position = location.PlayerSpawnPoint.position;
         }
 

@@ -8,7 +8,7 @@ namespace IdleRPG
         private LocationsDataProvider _dataProvider;
 
         [Inject]
-        public void Construct(LocationsDataProvider dataProvider)
+        public LocationViewItemFactory(LocationsDataProvider dataProvider)
         {
             _dataProvider = dataProvider;
         }

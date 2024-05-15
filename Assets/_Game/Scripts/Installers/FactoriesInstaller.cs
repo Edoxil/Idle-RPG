@@ -7,7 +7,8 @@ namespace IdleRPG
         public override void InstallBindings()
         {
             BindLocationFactory();
-            BindLocationBiewItemFactory();
+            BindLocationViewItemFactory();
+            BindEnemiesFactory();
         }
 
         private void BindLocationFactory()
@@ -19,7 +20,16 @@ namespace IdleRPG
                 .NonLazy();
         }
 
-        private void BindLocationBiewItemFactory()
+        private void BindEnemiesFactory()
+        {
+            Container.Bind<IFactory<Enemy, EnemyType>>()
+                .To<EnemiesFactory>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindLocationViewItemFactory()
         {
             Container.Bind<IFactory<LocationViewItem>>()
                 .To<LocationViewItemFactory>()

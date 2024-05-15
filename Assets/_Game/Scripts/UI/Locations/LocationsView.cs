@@ -20,6 +20,7 @@ namespace IdleRPG
         [Inject]
         public void Construct(IFactory<LocationViewItem> factory, LocationsDataProvider locationsDataProvider)
         {
+            _allItems = new List<LocationViewItem>();
             _factory = factory;
             _dataProvider = locationsDataProvider;
         }
@@ -44,6 +45,7 @@ namespace IdleRPG
                 if (item.gameObject != null)
                     Destroy(item.gameObject);
             }
+            _allItems?.Clear();
         }
 
         private void CreateItems()
@@ -54,6 +56,8 @@ namespace IdleRPG
                 item.SwitchLocationButtonClick += OnItemClicked;
                 Sprite icon = _dataProvider.GetIcon(locType);
                 item.Initialize(locType, icon);
+
+                _allItems.Add(item);
             }
         }
 

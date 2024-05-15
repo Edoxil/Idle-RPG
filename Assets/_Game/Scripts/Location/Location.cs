@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TriInspector;
 using UnityEngine;
 
@@ -9,5 +10,6 @@ namespace IdleRPG
         [field: SerializeField, Required] public Transform PlayerSpawnPoint { get; private set; }
         [field: SerializeField, Required] public Transform EnemySpawnPoint { get; private set; }
         [field: SerializeField, Required] public Sprite Icon { get; private set; }
+        [field: SerializeField] public List<RandomEnemy> Enemies { get; private set; }
     }
 }

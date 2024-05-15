@@ -22,7 +22,7 @@ namespace IdleRPG
             _action = action;
         }
 
-        public void Begin()
+        public void Execute()
         {
             _tween?.KillIfActiveOrPlaying();
 
@@ -46,7 +46,7 @@ namespace IdleRPG
 
         public void Restart()
         {
-            Begin();
+            Execute();
         }
     }
 }

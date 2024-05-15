@@ -24,8 +24,8 @@ namespace IdleRPG
             _playerAttackAction = new DelayedAction(_player.GetCombatStats().AttackDelay, _player.Attak);
             _enemyAttackAction = new DelayedAction(_enemy.GetCombatStats().AttackDelay, _enemy.Attak);
 
-            _playerAttackAction.Begin();
-            _enemyAttackAction.Begin();
+            _playerAttackAction.Execute();
+            _enemyAttackAction.Execute();
         }
     }
 }

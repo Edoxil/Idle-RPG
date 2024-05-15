@@ -8,12 +8,28 @@ namespace IdleRPG
     {
         [SerializeField, Required] private LocationSwitchSystem _locationSwitchSystem;
 
-        private PlayerEntryLocationSystem _playerEntryLocationSystem;
-
         public override void InstallBindings()
         {
             BindLocationSwitchSystem();
             BindPlayerEntryLocationSystem();
+            BindSearchEnemySystem();
+            BindEnemySpawnSystem();
+        }
+
+        private void BindEnemySpawnSystem()
+        {
+            Container.BindInterfacesAndSelfTo<EnemySpawnSystem>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindSearchEnemySystem()
+        {
+            Container.BindInterfacesAndSelfTo<SearchEnemySystem>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindLocationSwitchSystem()
@@ -26,9 +42,8 @@ namespace IdleRPG
 
         private void BindPlayerEntryLocationSystem()
         {
-            _playerEntryLocationSystem = new PlayerEntryLocationSystem();
-
             Container.BindInterfacesTo<PlayerEntryLocationSystem>()
+                .FromNew()
                 .AsSingle()
                 .NonLazy();
         }

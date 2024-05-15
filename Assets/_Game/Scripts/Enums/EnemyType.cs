@@ -2,6 +2,6 @@ namespace IdleRPG
 {
     public enum EnemyType
     {
-        Chick
+        Chick,
     }
 }

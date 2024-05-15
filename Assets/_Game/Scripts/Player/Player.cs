@@ -15,7 +15,7 @@ namespace IdleRPG
             CreateCombatStats();
         }
 
-        public void ResetAnimations()
+        public void EnterLocation()
         {
 
         }
@@ -23,6 +23,11 @@ namespace IdleRPG
         public void Attak()
         {
             _animations.Attack();
+        }
+
+        public bool IsFastEnemySearchLearned()
+        {
+            return false;
         }
 
         public CombatStats GetCombatStats()
