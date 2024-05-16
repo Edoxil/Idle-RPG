@@ -1,6 +1,6 @@
+using AppCore;
 using DG.Tweening;
 using System;
-using AppCore;
 
 namespace IdleRPG
 {
@@ -30,6 +30,12 @@ namespace IdleRPG
                 .OnUpdate(() => Progress = _tween.ElapsedPercentage(false));
 
             IsPaused = false;
+        }
+
+        public void Interrupt()
+        {
+            IsPaused = true;
+            _tween?.KillIfActiveOrPlaying();
         }
 
         public void Pause()

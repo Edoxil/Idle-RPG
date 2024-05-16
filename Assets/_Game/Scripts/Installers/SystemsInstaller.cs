@@ -14,6 +14,7 @@ namespace IdleRPG
             BindPlayerEntryLocationSystem();
             BindSearchEnemySystem();
             BindEnemySpawnSystem();
+            BindCombatSystem();
         }
 
         private void BindEnemySpawnSystem()
@@ -43,6 +44,14 @@ namespace IdleRPG
         private void BindPlayerEntryLocationSystem()
         {
             Container.BindInterfacesTo<PlayerEntryLocationSystem>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindCombatSystem()
+        {
+            Container.BindInterfacesAndSelfTo<CombatSystem>()
                 .FromNew()
                 .AsSingle()
                 .NonLazy();

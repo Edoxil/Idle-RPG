@@ -4,20 +4,20 @@ using Zenject;
 
 namespace IdleRPG
 {
-    public class EnemySpawnSystem : IInitializable, IDisposable, IEnemySpawner
+    public class EnemySpawnSystem : IInitializable, IDisposable, IEnemySpawnSystem
     {
-        private ILocationSwitcher _locationSwitcher;
+        private ILocationSwitchSystem _locationSwitcher;
         private IFactory<Enemy, EnemyType> _factory;
-        private IEnemySearcher _enemySearcher;
+        private IEnemySearchSystem _enemySearcher;
 
         public Enemy CurrentEnemy { get; private set; }
 
         public event Action<Enemy> EnemySpawned;
 
         [Inject]
-        public EnemySpawnSystem(ILocationSwitcher locationSwitcher,
+        public EnemySpawnSystem(ILocationSwitchSystem locationSwitcher,
             IFactory<Enemy, EnemyType> factory,
-            IEnemySearcher enemySearcher)
+            IEnemySearchSystem enemySearcher)
         {
             _locationSwitcher = locationSwitcher;
             _factory = factory;
@@ -26,12 +26,12 @@ namespace IdleRPG
 
         public void Initialize()
         {
-            _enemySearcher.SearchComplete += SpawnRandomEnemy;
+            _enemySearcher.SearchCompleted += SpawnRandomEnemy;
         }
 
         public void Dispose()
         {
-            _enemySearcher.SearchComplete -= SpawnRandomEnemy;
+            _enemySearcher.SearchCompleted -= SpawnRandomEnemy;
         }
 
         [Button]

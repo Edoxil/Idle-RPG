@@ -6,10 +6,10 @@ namespace IdleRPG
     public class PlayerEntryLocationSystem : IInitializable, IDisposable
     {
         private Player _player;
-        private ILocationSwitcher _locationSwitcher;
+        private ILocationSwitchSystem _locationSwitcher;
 
         [Inject]
-        public void Construct(Player player, ILocationSwitcher locataionSwitcher)
+        public void Construct(Player player, ILocationSwitchSystem locataionSwitcher)
         {
             _player = player;
             _locationSwitcher = locataionSwitcher;

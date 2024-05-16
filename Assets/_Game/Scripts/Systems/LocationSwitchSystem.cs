@@ -6,21 +6,21 @@ using Zenject;
 
 namespace IdleRPG
 {
-    public class LocationSwitchSystem : MonoBehaviour, IInitializable, IDisposable, ILocationSwitcher
+    public class LocationSwitchSystem : MonoBehaviour, IInitializable, IDisposable, ILocationSwitchSystem
     {
         [SerializeField] private LocationType _defaultLocation;
         private IFactory<Location, LocationType> _factory;
 
         private readonly string _savingKey = "LastVisitedLocation";
         private LocationType _lastVisitedLocation;
-        private LocationsView _view;
+        private ILocationSwitchView _view;
 
         [ShowInInspector, ReadOnly] public Location CurrentLocation { get; private set; }
 
         public event Action<Location> LocationSwitched;
 
         [Inject]
-        public void Construct(IFactory<Location, LocationType> factory, LocationsView view)
+        public void Construct(IFactory<Location, LocationType> factory, ILocationSwitchView view)
         {
             _factory = factory;
             _view = view;

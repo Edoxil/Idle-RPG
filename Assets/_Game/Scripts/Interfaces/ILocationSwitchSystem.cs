@@ -2,7 +2,7 @@ using System;
 
 namespace IdleRPG
 {
-    public interface ILocationSwitcher
+    public interface ILocationSwitchSystem
     {
         public Location CurrentLocation { get; }
         public event Action<Location> LocationSwitched;

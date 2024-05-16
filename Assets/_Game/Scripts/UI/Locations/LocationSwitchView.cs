@@ -6,7 +6,7 @@ using Zenject;
 
 namespace IdleRPG
 {
-    public class LocationsView : MonoBehaviour, IInitializable
+    public class LocationSwitchView : MonoBehaviour, IInitializable, ILocationSwitchView
     {
         [SerializeField, Required] private RectTransform _contentParent;
 

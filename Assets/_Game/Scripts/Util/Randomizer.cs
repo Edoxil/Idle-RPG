@@ -15,7 +15,7 @@ namespace IdleRPG
             List<T> allItems = new List<T>(randomValues);
 
             if (allItems.Count <= 0)
-                throw new ArgumentOutOfRangeException(nameof(randomValues));
+                throw new ArgumentOutOfRangeException(randomValues.ToString());
 
             float totalChance = 0f;
 
