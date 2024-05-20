@@ -15,25 +15,22 @@ namespace IdleRPG
         private float _searchingTime;
         private ILocationSwitchSystem _locationSwitcher;
         private ISearchEnemyView _view;
-        private ICombatSystem _combatSystem;
 
         public event Action SearchCompleted;
 
         [Inject]
         public SearchEnemySystem(Player player, ILocationSwitchSystem locationSwitcher,
-            ISearchEnemyView view, ICombatSystem combatSystem)
+            ISearchEnemyView view )
         {
             _player = player;
             _locationSwitcher = locationSwitcher;
             _view = view;
-            _combatSystem = combatSystem;
         }
 
         public void Initialize()
         {
             _locationSwitcher.LocationSwitched += OnLocationSwitched;
             _view.StartSearchRequested += StartSearching;
-            _combatSystem.CombatInterrupted += OnCombatInterrupted;
 
             _searchingTime = _player.IsFastEnemySearchLearned() ? _fastEnemySearchingTime : _defaultSerchingTime;
             _view.ShowSearchInitiationElements();
@@ -43,7 +40,6 @@ namespace IdleRPG
         {
             _locationSwitcher.LocationSwitched -= OnLocationSwitched;
             _view.StartSearchRequested -= StartSearching;
-            _combatSystem.CombatInterrupted -= OnCombatInterrupted;
         }
 
         private void StartSearching()
@@ -65,11 +61,6 @@ namespace IdleRPG
         {
             _view.HideSearchAnimationElements();
             _searchingAction?.Interrupt();
-            _view.ShowSearchInitiationElements();
-        }
-
-        private void OnCombatInterrupted()
-        {
             _view.ShowSearchInitiationElements();
         }
     }
